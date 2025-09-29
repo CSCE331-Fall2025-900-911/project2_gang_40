@@ -1,0 +1,1 @@
+SELECT * FROM drinks WHERE base_price < 6.00;
