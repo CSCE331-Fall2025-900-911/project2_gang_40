@@ -1,0 +1,1 @@
+SELECT * FROM drinks WHERE (stock < 10);
