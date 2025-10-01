@@ -1,0 +1,1 @@
+SELECT ALL * FROM supplies WHERE stock <= 1000.00;
