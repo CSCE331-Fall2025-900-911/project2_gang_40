@@ -31,3 +31,5 @@ INSERT INTO Ingredients (ingredient_id, ingredient_name, unit, stock_quantity) V
 (23, 'Ice Cream', 'grams', 500),
 (24, 'Creama', 'grams', 300);
 
+
+
