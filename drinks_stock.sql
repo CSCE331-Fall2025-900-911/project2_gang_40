@@ -1,2 +1,0 @@
-ALTER TABLE drinks
-DROP COLUMN stock;
