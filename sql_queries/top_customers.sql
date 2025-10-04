@@ -1,5 +1,4 @@
 -- Gets top 5 highest spending customers
-
 SELECT 
     c.first_name || ' ' || c.last_name AS customer_name,
     SUM(s.total_price) AS total_spent,
