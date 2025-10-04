@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.*;
 
+//Opens the first page and logins into manager or cashier depending on the user name and password
 public class Login implements ActionListener {
 
     private static JLabel Userlabel;
@@ -22,11 +23,10 @@ public class Login implements ActionListener {
     }
 
     public void showLogin() {
-
         JFrame frame = new JFrame("Login");
         JPanel panel = new JPanel();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
+        frame.setSize(300, 160);
         frame.setLocationRelativeTo(null);  //show in the middle
         frame.add(panel);
 
@@ -41,11 +41,11 @@ public class Login implements ActionListener {
         panel.add(Passwordlabel);
 
         userText = new JTextField();
-        userText.setBounds(100, 20, 165, 25);
+        userText.setBounds(100, 20, 190, 25);
         panel.add(userText);
 
         passwordText = new JPasswordField();
-        passwordText.setBounds(100, 50, 165, 25); //x,y,width,height
+        passwordText.setBounds(100, 50, 190, 25); //x,y,width,height
         panel.add(passwordText);
 
         button = new JButton("Login");
@@ -68,7 +68,7 @@ public class Login implements ActionListener {
 
         try {
             Statement stmt = conn.createStatement();
-            String statemtn = "SELECT * FROM employees WHERE role = 'Manager' AND email = ? AND password = ?";
+            String statemtn = "SELECT * FROM employees WHERE email = ? AND password = ?";
             PreparedStatement pstmt = conn.prepareStatement(statemtn);
             pstmt.setString(1, user);
             pstmt.setString(2, password);
@@ -77,14 +77,28 @@ public class Login implements ActionListener {
 
             
             if (rs.next()) {
+                String role = rs.getString("role");
                 success.setText("Login successful");
+
+                if (role.equals("Manager")){
+                    // JOptionPane.showMessageDialog(null, "You ARE IN MANAGER BUDDY!");
+                    Manager managerView = new Manager(conn);
+                    managerView.showManager();
+                }
+                else if (role.equals("Cashier")){
+                //    JOptionPane.showMessageDialog(null, "You ARE IN Cashier BUDDY!");
+                    Cashier cashierView = new Cashier(conn);
+                    cashierView.showCashier();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Unfortunatey you are not allowed to use the POS system!");
+                }
+                
                 SwingUtilities.getWindowAncestor(button).dispose();
-                jdbcpostgreSQLGUI.showDatabaseGUI(conn);
+                // jdbcpostgreSQLGUI.showDatabaseGUI(conn);
             }
             else{
                 success.setText("Wrong email or password");
-                System.out.println("user: '" + user + "' len=" + user.length());
-                System.out.println("password: '" + password + "' len=" + password.length());
 
             }
 
