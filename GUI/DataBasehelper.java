@@ -4,7 +4,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.DefaultListModel;
 
-public class GUIhelper {
+//helper class to get queries
+public class DataBasehelper {
     public static DefaultListModel<String> getLastNames(Connection conn, String sqlStatement) throws Exception {
         DefaultListModel<String> model = new DefaultListModel<>();
         Statement stmt = conn.createStatement();
@@ -14,9 +15,6 @@ public class GUIhelper {
         }
         return model;
     }
-
-    
-
 
 
 }

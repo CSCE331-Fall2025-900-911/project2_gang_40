@@ -55,12 +55,14 @@ public class jdbcpostgreSQLGUI {
             JOptionPane.showMessageDialog(null, "Error accessing Database.");
         }
 
+        //list for the last names
         JList list = new JList(listModel);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setSelectedIndex(0);
         list.setVisibleRowCount(5);
         JScrollPane listScrollPane = new JScrollPane(list);
 
+        
         JFrame frame = new JFrame();
         frame.setTitle("Last Names of customers");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //exit out of application when clicked
@@ -70,12 +72,11 @@ public class jdbcpostgreSQLGUI {
 
 
         //closing the connection
-        Connection finalConn = conn;
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
                 try {
-                    finalConn.close();
+                    conn.close();
                     JOptionPane.showMessageDialog(null, "Connection Closed.");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Connection NOT Closed.");
@@ -85,4 +86,6 @@ public class jdbcpostgreSQLGUI {
 
         frame.setVisible(true);
     }//end main class
+
+    
 }
