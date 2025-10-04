@@ -1,5 +1,5 @@
 # Ignore compiled files
-*.class
+**/*.class
 
 # Ignore IDE folders
 .idea/
@@ -9,4 +9,5 @@
 *.log
 
 # Ignore database credentials
-dbSetup.java
+**/dbSetup.java
+
