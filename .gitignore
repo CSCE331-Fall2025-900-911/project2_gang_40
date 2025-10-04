@@ -5,9 +5,6 @@
 .idea/
 .vscode/
 
-# Ignore logs
-*.log
-
 # Ignore database credentials
 **/dbSetup.java
 
