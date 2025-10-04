@@ -25,5 +25,18 @@ public class Cashier extends JFrame {
         setVisible(true);
     }
 
+    /* TODOS */
+    private void MakeOrder(){
+
+    }
+
+    private void SplitPanel(){
+
+    }
+
+    private void Slider(){
+
+    }
+
     
 }
