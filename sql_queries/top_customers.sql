@@ -1,4 +1,4 @@
--- Gets top 5 highest spending customers
+-- Gets top 10 highest spending customers
 
 SELECT 
     c.first_name || ' ' || c.last_name AS customer_name,
@@ -8,4 +8,4 @@ FROM sales_history s
 JOIN customers c ON s.customer_id = c.customer_id
 GROUP BY c.customer_id, c.first_name, c.last_name
 ORDER BY total_spent DESC
-LIMIT 5;
+LIMIT 10;

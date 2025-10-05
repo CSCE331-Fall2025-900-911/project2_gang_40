@@ -1,7 +1,7 @@
 SELECT
     t.topping_name,
     COUNT(o.quantity) as num_sold,
-    SUM(o.total_price) as total_revenue
+    SUM(o.price) as total_revenue
 FROM orders o
 JOIN drink_variation dv ON o.variation_id = dv.variation_id
 JOIN toppings t ON dv.topping_id = t.topping_id
