@@ -1,8 +1,6 @@
--- Gets the week for all sales 
-
-SELECT 'WEEK ' || EXTRACT(WEEK FROM sales_time) || ' in ' || 'YEAR ' || EXTRACT(YEAR FROM sales_time) ||
-        ' has ' || COUNT(*) || ' orders' AS sales_history_for_weeks
-    FROM sales_history
-    GROUP BY EXTRACT(YEAR FROM sales_time), EXTRACT(WEEK FROM sales_time)
-    ORDER BY EXTRACT(YEAR FROM sales_time), EXTRACT(WEEK FROM sales_time);
-
+SELECT 'WEEK ' || TO_CHAR(DATE_TRUNC('week', sales_time), 'IW') 
+        || ' in YEAR ' || TO_CHAR(DATE_TRUNC('week', sales_time), 'IYYY') AS week_label,
+    COUNT(*) AS num_orders
+FROM sales_history
+GROUP BY DATE_TRUNC('week', sales_time)
+ORDER BY MIN(DATE_TRUNC('week', sales_time));
