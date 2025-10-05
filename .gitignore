@@ -1,0 +1,10 @@
+# Ignore compiled files
+**/*.class
+
+# Ignore IDE folders
+.idea/
+.vscode/
+
+# Ignore database credentials
+**/dbSetup.java
+
